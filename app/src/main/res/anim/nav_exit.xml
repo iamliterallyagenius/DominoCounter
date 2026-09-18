@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Forward navigation: the old screen eases left and dims, suggesting it's now "behind". -->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:duration="240"
+        android:fromXDelta="0%"
+        android:interpolator="@android:interpolator/accelerate_cubic"
+        android:toXDelta="-25%" />
+    <alpha
+        android:duration="240"
+        android:fromAlpha="1.0"
+        android:toAlpha="0.6" />
+</set>

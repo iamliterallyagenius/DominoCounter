@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The languages the app ships translations for; Android 13+ also lists them in the system's
+     per-app language settings. Keep in sync with AppLanguage and the values-<lang> folders. -->
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <locale android:name="en" />
+    <locale android:name="fr" />
+</locale-config>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="status_in_progress">#E3C56F</color>
+    <color name="status_abandoned">#F2B8B5</color>
+</resources>

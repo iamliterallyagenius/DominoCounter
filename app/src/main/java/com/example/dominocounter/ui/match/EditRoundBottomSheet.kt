@@ -10,7 +10,6 @@ import com.example.dominocounter.R
 import com.example.dominocounter.databinding.SheetEditRoundBinding
 import com.example.dominocounter.domain.model.Rules
 import com.example.dominocounter.domain.model.ScoreSource
-import com.example.dominocounter.util.padForKeyboardOrNavigationBar
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,7 +34,6 @@ class EditRoundBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val views = binding ?: return
-        views.root.padForKeyboardOrNavigationBar()
 
         // The round is already in memory as part of the match state; re-querying would be
         // a second source of truth for the same row.

@@ -13,7 +13,8 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_back"
             app:title="@string/menu_settings" />
     </com.google.android.material.appbar.AppBarLayout>
@@ -31,9 +32,45 @@
             android:orientation="vertical"
             android:padding="24dp">
 
+            <!-- Opens a chooser; picking a language re-creates the activity in it. -->
+            <LinearLayout
+                android:id="@+id/languageRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_language"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="?attr/colorOnSurfaceVariant"
+                    android:gravity="center_vertical"
+                    android:text="@string/settings_language"
+                    android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+                <TextView
+                    android:id="@+id/languageValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:alpha="0.7"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    tools:text="English" />
+            </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_flag"
+                android:drawablePadding="10dp"
+                android:drawableTint="?attr/colorOnSurfaceVariant"
+                android:gravity="center_vertical"
                 android:text="@string/settings_target_score"
                 android:textAppearance="?attr/textAppearanceTitleMedium" />
 
@@ -59,6 +96,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:drawableStart="@drawable/ic_torch"
+                android:drawablePadding="14dp"
+                android:drawableTint="?attr/colorOnSurfaceVariant"
                 android:text="@string/settings_torch_default" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
@@ -66,6 +106,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:drawableStart="@drawable/ic_vibration"
+                android:drawablePadding="14dp"
+                android:drawableTint="?attr/colorOnSurfaceVariant"
                 android:text="@string/settings_haptics" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
@@ -73,6 +116,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:drawableStart="@drawable/ic_tune"
+                android:drawablePadding="14dp"
+                android:drawableTint="?attr/colorOnSurfaceVariant"
                 android:text="@string/settings_scanner_debug" />
 
             <TextView

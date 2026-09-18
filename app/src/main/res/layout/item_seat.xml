@@ -1,26 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.textfield.TextInputLayout
+<!-- One seat. In team play the first seat of each team also carries a header, and the first
+     seat of team B additionally a "VS" divider above it, so the split reads as two groups
+     rather than four similar fields. Both extras stay GONE for solo formats. -->
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/seatLayout"
-    style="?attr/textInputOutlinedStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    app:endIconContentDescription="@string/setup_remove_player"
-    app:endIconDrawable="@drawable/ic_remove_player"
-    app:endIconMode="custom"
-    app:errorEnabled="true"
-    app:startIconDrawable="@drawable/ic_player"
-    tools:hint="Team A · Player 1">
+    android:orientation="vertical">
 
-    <AutoCompleteTextView
-        android:id="@+id/seatInput"
+    <LinearLayout
+        android:id="@+id/teamDivider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:completionThreshold="1"
-        android:imeOptions="actionNext"
-        android:inputType="textPersonName|textCapWords"
-        android:maxLines="1" />
-</com.google.android.material.textfield.TextInputLayout>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:paddingHorizontal="14dp"
+            android:text="@string/setup_versus"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/teamHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:drawableStart="@drawable/ic_team_dot"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:textAppearance="?attr/textAppearanceTitleSmall"
+        android:visibility="gone"
+        tools:text="Team A"
+        tools:visibility="visible" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/seatLayout"
+        style="?attr/textInputOutlinedStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        app:endIconContentDescription="@string/setup_remove_player"
+        app:endIconDrawable="@drawable/ic_remove_player"
+        app:endIconMode="custom"
+        app:errorEnabled="true"
+        app:startIconDrawable="@drawable/ic_player"
+        tools:hint="Player 1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/seatInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName|textCapWords"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

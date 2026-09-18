@@ -30,7 +30,7 @@ class GameHistoryFragment : Fragment(R.layout.fragment_game_history) {
         binding.historyList.padForNavigationBar()
         binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
 
-        adapter = MatchHistoryAdapter(::openDetail)
+        adapter = MatchHistoryAdapter(::openMatch)
         binding.historyList.layoutManager = LinearLayoutManager(requireContext())
         binding.historyList.adapter = adapter
 
@@ -40,7 +40,13 @@ class GameHistoryFragment : Fragment(R.layout.fragment_game_history) {
         }
     }
 
-    private fun openDetail(match: MatchState) {
-        findNavController().navigate(GameHistoryFragmentDirections.toMatchHistoryDetail(match.matchId))
+    /** A finished match opens read-only; one still being played goes back to its live scoreboard. */
+    private fun openMatch(match: MatchState) {
+        val directions = if (match.isEditable) {
+            GameHistoryFragmentDirections.toMatch(match.matchId)
+        } else {
+            GameHistoryFragmentDirections.toMatchHistoryDetail(match.matchId)
+        }
+        findNavController().navigate(directions)
     }
 }

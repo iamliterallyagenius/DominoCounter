@@ -33,6 +33,7 @@ class VictoryDialogFragment : DialogFragment() {
         val scoreLine = state.sides.joinToString(" – ") { it.score.toString() }
 
         return MaterialAlertDialogBuilder(requireContext())
+            .setIcon(R.drawable.ic_trophy)
             .setTitle(getString(R.string.victory_title, winner.label))
             .setMessage(getString(R.string.victory_message, scoreLine))
             .setCancelable(false)

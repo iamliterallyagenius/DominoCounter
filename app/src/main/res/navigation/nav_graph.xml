@@ -13,24 +13,44 @@
 
         <action
             android:id="@+id/toGameSetup"
-            app:destination="@id/gameSetupFragment" />
+            app:destination="@id/gameSetupFragment"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
 
         <!-- R6: resume an IN_PROGRESS match straight from the menu. -->
         <action
             android:id="@+id/toMatch"
-            app:destination="@id/match_graph" />
+            app:destination="@id/match_graph"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
 
         <action
             android:id="@+id/toPlayerStats"
-            app:destination="@id/playerStatsFragment" />
+            app:destination="@id/playerStatsFragment"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
 
         <action
             android:id="@+id/toGameHistory"
-            app:destination="@id/gameHistoryFragment" />
+            app:destination="@id/gameHistoryFragment"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
 
         <action
             android:id="@+id/toSettings"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
     </fragment>
 
     <fragment
@@ -45,7 +65,11 @@
             android:id="@+id/toMatch"
             app:destination="@id/match_graph"
             app:popUpTo="@id/gameSetupFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
     </fragment>
 
     <!-- Everything belonging to one live match. MatchViewModel is scoped here,
@@ -90,7 +114,11 @@
                 android:id="@+id/toScanner"
                 app:destination="@id/cameraScannerFragment"
                 app:popUpTo="@id/addRoundBottomSheet"
-                app:popUpToInclusive="true" />
+                app:popUpToInclusive="true"
+                app:enterAnim="@anim/nav_enter"
+                app:exitAnim="@anim/nav_exit"
+                app:popEnterAnim="@anim/nav_pop_enter"
+                app:popExitAnim="@anim/nav_pop_exit" />
         </dialog>
 
         <dialog
@@ -121,7 +149,11 @@
                 android:id="@+id/toRematch"
                 app:destination="@id/match_graph"
                 app:popUpTo="@id/match_graph"
-                app:popUpToInclusive="true" />
+                app:popUpToInclusive="true"
+                app:enterAnim="@anim/nav_enter"
+                app:exitAnim="@anim/nav_exit"
+                app:popEnterAnim="@anim/nav_pop_enter"
+                app:popExitAnim="@anim/nav_pop_exit" />
         </dialog>
     </navigation>
 
@@ -144,9 +176,22 @@
         android:label="@string/menu_game_history"
         tools:layout="@layout/fragment_game_history">
 
+        <!-- An in-progress match listed in the history reopens as the live scoreboard. -->
+        <action
+            android:id="@+id/toMatch"
+            app:destination="@id/match_graph"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
+
         <action
             android:id="@+id/toMatchHistoryDetail"
-            app:destination="@id/matchHistoryDetailFragment" />
+            app:destination="@id/matchHistoryDetailFragment"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
     </fragment>
 
     <fragment

@@ -46,9 +46,20 @@ fun View.padForNavigationBar() = consumeInsets { v, bars, _ ->
 /**
  * Keeps bottom-anchored content (buttons, bottom sheets) clear of whichever is taller: the
  * keyboard while it's open, or the navigation bar while it's closed.
+ *
+ * [onKeyboardHeightChanged] is told the keyboard's height (0 once it closes) whenever it changes.
  */
-fun View.padForKeyboardOrNavigationBar() = consumeInsets { v, bars, ime ->
-    v.updatePadding(bottom = v.paddingBottom + maxOf(bars.bottom, ime.bottom))
+fun View.padForKeyboardOrNavigationBar(onKeyboardHeightChanged: ((Int) -> Unit)? = null) {
+    var lastKeyboardHeight = 0
+    consumeInsets { v, bars, ime ->
+        v.updatePadding(bottom = v.paddingBottom + maxOf(bars.bottom, ime.bottom))
+
+        if (onKeyboardHeightChanged != null && ime.bottom != lastKeyboardHeight) {
+            lastKeyboardHeight = ime.bottom
+            // After the padding above has been laid out, so the callback can scroll into it.
+            v.post { onKeyboardHeightChanged(ime.bottom) }
+        }
+    }
 }
 
 /**

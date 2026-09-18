@@ -1,0 +1,8 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <!-- One outline traced around the whole plus. Two overlapping bars under evenOdd
+         cancel each other where they cross and leave a hole in the middle. -->
+    <path android:fillColor="@android:color/white"
+        android:pathData="M10.4,4 L13.6,4 L13.6,10.4 L20,10.4 L20,13.6 L13.6,13.6 L13.6,20 L10.4,20 L10.4,13.6 L4,13.6 L4,10.4 L10.4,10.4 Z" />
+</vector>

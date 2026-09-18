@@ -1,12 +1,10 @@
 package com.example.dominocounter.ui.match
 
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.lifecycleScope
@@ -79,12 +77,9 @@ class ScoreboardFragment : Fragment(R.layout.fragment_scoreboard) {
             panel.sideScore.text = side.score.toString()
             panel.sideToWin.text = getString(R.string.score_to_win, side.pointsToWin)
 
-            // The leading side gets a coloured outline rather than a different layout —
+            // The leading side gets a stronger tint rather than a different layout —
             // cheap to render and it survives a three-panel free-for-all.
-            panel.sideCard.strokeWidth = if (side.isLeading) LEADING_STROKE_DP.dp() else 0
-            panel.sideCard.strokeColor = ContextCompat.getColor(
-                requireContext(), RoundLogAdapter.sideColor(side.index)
-            )
+            panel.applySideColor(requireContext(), side.index, side.isLeading)
 
             panel.foulButton.isEnabled = state.isEditable
             panel.addScoreButton.isEnabled = state.isEditable
@@ -107,9 +102,6 @@ class ScoreboardFragment : Fragment(R.layout.fragment_scoreboard) {
         state.sides.forEach { side ->
             val panel = ViewSidePanelBinding.inflate(inflater, binding.sideContainer, true)
             panel.sideScore.setTextSize(TypedValue.COMPLEX_UNIT_SP, scoreSize)
-            panel.sideStripe.backgroundTintList = ColorStateList.valueOf(
-                ContextCompat.getColor(requireContext(), RoundLogAdapter.sideColor(side.index))
-            )
             panel.foulButton.text = getString(R.string.score_foul, Rules.FOUL_POINTS)
             panel.foulButton.setOnClickListener {
                 viewModel.addFoul(side.index)
@@ -177,11 +169,8 @@ class ScoreboardFragment : Fragment(R.layout.fragment_scoreboard) {
         super.onDestroyView()
     }
 
-    private fun Int.dp(): Int = (this * resources.displayMetrics.density).toInt()
-
     private companion object {
         const val SCORE_SP_TWO = 56f
         const val SCORE_SP_THREE = 40f
-        const val LEADING_STROKE_DP = 3
     }
 }

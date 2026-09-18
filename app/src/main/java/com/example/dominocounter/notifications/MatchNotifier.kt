@@ -7,7 +7,9 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.os.Build
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
@@ -67,6 +69,7 @@ class MatchNotifier @Inject constructor(
             return
         }
 
+        val text = localizedContext()
         val scoreLine = state.sides.joinToString("  ·  ") { "${it.label} ${it.score}" }
 
         val intent = Intent(context, MainActivity::class.java).apply {
@@ -81,9 +84,9 @@ class MatchNotifier @Inject constructor(
         )
 
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_monochrome)
-            .setContentTitle(context.getString(R.string.notification_title))
-            .setContentText(context.getString(R.string.notification_content, scoreLine))
+            .setSmallIcon(R.drawable.ic_stat_domino)
+            .setContentTitle(text.getString(R.string.notification_title))
+            .setContentText(text.getString(R.string.notification_content, scoreLine))
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .setOngoing(false)
             .setAutoCancel(false)
@@ -91,6 +94,17 @@ class MatchNotifier @Inject constructor(
             .build()
 
         NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, notification)
+    }
+
+    /**
+     * The application context follows the system language, not the in-app choice, before
+     * Android 13 (the platform only applies per-app locales to the whole app from there on),
+     * so notification text is resolved through a context in the language picked in Settings.
+     */
+    private fun localizedContext(): Context {
+        val locale = AppCompatDelegate.getApplicationLocales()[0] ?: return context
+        val config = Configuration(context.resources.configuration).apply { setLocale(locale) }
+        return context.createConfigurationContext(config)
     }
 
     private fun cancel() {

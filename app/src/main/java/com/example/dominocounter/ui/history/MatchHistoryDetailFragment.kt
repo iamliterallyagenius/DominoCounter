@@ -1,12 +1,10 @@
 package com.example.dominocounter.ui.history
 
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -18,6 +16,7 @@ import com.example.dominocounter.domain.model.MatchFormat
 import com.example.dominocounter.domain.model.MatchState
 import com.example.dominocounter.domain.model.SideState
 import com.example.dominocounter.ui.match.RoundLogAdapter
+import com.example.dominocounter.ui.match.applySideColor
 import com.example.dominocounter.util.collectWhileStarted
 import com.example.dominocounter.util.padForNavigationBar
 import com.example.dominocounter.util.padForStatusBar
@@ -61,10 +60,7 @@ class MatchHistoryDetailFragment : Fragment(R.layout.fragment_match_history_deta
             panel.sideName.text = side.label
             panel.sideScore.text = side.score.toString()
             panel.sideToWin.text = getString(R.string.score_to_win, side.pointsToWin)
-            panel.sideCard.strokeWidth = if (side.isLeading) LEADING_STROKE_DP.dp() else 0
-            panel.sideCard.strokeColor = ContextCompat.getColor(
-                requireContext(), RoundLogAdapter.sideColor(side.index)
-            )
+            panel.applySideColor(requireContext(), side.index, side.isLeading)
         }
 
         logAdapter.sideLabels = state.sides.map(SideState::label)
@@ -78,9 +74,6 @@ class MatchHistoryDetailFragment : Fragment(R.layout.fragment_match_history_deta
         state.sides.forEach { side ->
             val panel = ViewSidePanelBinding.inflate(inflater, binding.sideContainer, true)
             panel.sideScore.setTextSize(TypedValue.COMPLEX_UNIT_SP, scoreSize)
-            panel.sideStripe.backgroundTintList = ColorStateList.valueOf(
-                ContextCompat.getColor(requireContext(), RoundLogAdapter.sideColor(side.index))
-            )
             // A finished match has nothing left to add — this view is look-only.
             panel.foulButton.visibility = View.GONE
             panel.addScoreButton.visibility = View.GONE
@@ -99,11 +92,8 @@ class MatchHistoryDetailFragment : Fragment(R.layout.fragment_match_history_deta
         super.onDestroyView()
     }
 
-    private fun Int.dp(): Int = (this * resources.displayMetrics.density).toInt()
-
     private companion object {
         const val SCORE_SP_TWO = 56f
         const val SCORE_SP_THREE = 40f
-        const val LEADING_STROKE_DP = 3
     }
 }

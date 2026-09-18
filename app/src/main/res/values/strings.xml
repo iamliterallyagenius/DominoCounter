@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Domino Counter</string>
+    <string name="app_name" translatable="false">Domino Counter</string>
 
     <!-- Main menu -->
     <string name="menu_new_game">New Game</string>
@@ -15,13 +15,13 @@
     <!-- Setup -->
     <string name="setup_title">New match</string>
     <string name="setup_players">Players</string>
-    <string name="setup_format_hint">%s</string>
+    <string name="setup_format_hint" translatable="false">%s</string>
     <string name="setup_start">Start Match</string>
-    <string name="setup_seat_hint_solo">Player %1$d</string>
-    <string name="setup_seat_hint_team">%1$s · Player %2$d</string>
+    <string name="setup_seat_hint">Player %1$d</string>
     <string name="setup_error_duplicate">Already picked</string>
     <string name="setup_error_blank">Enter a name</string>
-    <string name="setup_add_player">+ Add Player</string>
+    <string name="setup_add_player">Add Player</string>
+    <string name="setup_versus" translatable="false">VS</string>
     <string name="setup_remove_player">Remove player</string>
     <string name="format_one_v_one">1 v 1</string>
     <string name="format_two_v_two">2 v 2 — teams</string>
@@ -36,7 +36,7 @@
     <string name="score_add">Add Round Score</string>
     <string name="score_log_title">Round log</string>
     <string name="score_log_empty">No scores yet. Add the first round.</string>
-    <string name="score_log_row">%1$+d</string>
+    <string name="score_log_row" translatable="false">%1$+d</string>
     <string name="score_log_total">total %1$d</string>
     <string name="score_edited">edited</string>
     <string name="score_abandon">Abandon match</string>
@@ -69,7 +69,7 @@
 
     <!-- Scanner prototype (step 5) -->
     <string name="label_total">TOTAL POINTS</string>
-    <string name="zero">0</string>
+    <string name="zero" translatable="false">0</string>
     <string name="status_starting">starting…</string>
     <string name="status_permission_denied">Camera permission denied</string>
     <string name="status_opencv_failed">OpenCV failed to load</string>
@@ -97,6 +97,11 @@
     <string name="stats_format_row">%1$s: %2$d/%3$d · %4$d%%</string>
 
     <!-- Settings -->
+    <string name="settings_language">Language</string>
+    <string name="settings_language_system">System default</string>
+    <!-- Each language is always shown under its own name, whatever language the app is in. -->
+    <string name="settings_language_english" translatable="false">English</string>
+    <string name="settings_language_french" translatable="false">Français</string>
     <string name="settings_target_score">Default target score</string>
     <string name="settings_target_score_value">%1$d points</string>
     <string name="settings_torch_default">Torch on by default</string>
@@ -105,8 +110,9 @@
     <string name="settings_scanner_debug_hint">When on, tap the camera preview during a scan to cycle through diagnostic views (mask / detections).</string>
 
     <!-- Game history -->
-    <string name="history_empty">No finished matches yet</string>
+    <string name="history_empty">No matches yet</string>
     <string name="history_abandoned">Abandoned</string>
+    <string name="history_in_progress">In progress · tap to resume</string>
     <string name="history_row_score">%1$s %2$d</string>
 
     <!-- In-progress match notification -->

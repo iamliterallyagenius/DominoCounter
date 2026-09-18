@@ -1,84 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- One scoring side. Inflated 2 or 3 times into fragment_scoreboard's container. -->
+<!-- One scoring side. Inflated 2 or 3 times into fragment_scoreboard's container.
+     Background tint, accent bar and score colour are all set in code from the side's colour. -->
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sideCard"
-    style="?attr/materialCardViewOutlinedStyle"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="4dp"
     android:layout_weight="1"
-    app:cardCornerRadius="18dp">
+    app:cardCornerRadius="18dp"
+    app:cardElevation="1dp"
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="12dp">
+        android:orientation="vertical">
 
+        <!-- Full-width accent bar, clipped to the card's rounded top corners for free. -->
         <View
             android:id="@+id/sideStripe"
-            android:layout_width="36dp"
-            android:layout_height="4dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/bg_side_stripe" />
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="@android:color/white" />
 
-        <TextView
-            android:id="@+id/sideName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="2"
-            android:textAppearance="?attr/textAppearanceTitleSmall"
-            tools:text="Wael &amp; Bilal" />
+            android:orientation="vertical"
+            android:paddingHorizontal="8dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="12dp">
 
-        <TextView
-            android:id="@+id/sideScore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:fontFamily="sans-serif-black"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:textColor="?attr/colorOnSurface"
-            tools:text="65"
-            tools:textSize="56sp" />
+            <TextView
+                android:id="@+id/sideName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textAppearance="?attr/textAppearanceTitleSmall"
+                tools:text="Wael &amp; Bilal" />
 
-        <TextView
-            android:id="@+id/sideToWin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:alpha="0.65"
-            android:gravity="center"
-            android:textAppearance="?attr/textAppearanceLabelSmall"
-            tools:text="35 to win" />
+            <TextView
+                android:id="@+id/sideScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                tools:text="65"
+                tools:textSize="56sp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/foulButton"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            android:paddingHorizontal="4dp"
-            android:textSize="12sp"
-            tools:text="+50 Foul" />
+            <TextView
+                android:id="@+id/sideToWin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.65"
+                android:gravity="center"
+                android:textAppearance="?attr/textAppearanceLabelSmall"
+                tools:text="35 to win" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/addScoreButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            android:paddingHorizontal="4dp"
-            android:text="@string/score_add"
-            android:textSize="12sp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/foulButton"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:paddingHorizontal="4dp"
+                android:textSize="12sp"
+                app:icon="@drawable/ic_flag"
+                app:iconGravity="textStart"
+                app:iconPadding="4dp"
+                app:iconSize="16dp"
+                tools:text="+50 Foul" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addScoreButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:paddingHorizontal="4dp"
+                android:textSize="12sp"
+                app:icon="@drawable/ic_add_score"
+                app:iconGravity="textStart"
+                app:iconPadding="4dp"
+                app:iconSize="16dp"
+                android:text="@string/score_add" />
+        </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

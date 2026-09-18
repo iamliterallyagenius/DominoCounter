@@ -63,7 +63,7 @@ class MatchRepository @Inject constructor(
     /** Setup screen prefill: same lineup as last time, in seat order, until edited. */
     suspend fun getLastLineupNames(): List<String> = matchDao.lastLineupNames()
 
-    /** Game history: every finished match, most recent first. */
+    /** Game history: every match, unfinished ones first, then most recent first. */
     fun observeHistory(): Flow<List<MatchSnapshot>> =
         matchDao.observeHistory().map { list -> list.map { it.toSnapshot() } }
 

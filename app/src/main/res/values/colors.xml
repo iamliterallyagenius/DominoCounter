@@ -18,4 +18,11 @@
 
     <color name="log_foul">#C0392B</color>
     <color name="log_scan">#2E86AB</color>
+
+    <!-- Game-history status lines; the night variants keep the same contrast on a dark card. -->
+    <color name="status_in_progress">#7A5C00</color>
+    <color name="status_abandoned">#B3261E</color>
+
+    <!-- Tonal fill for the Resume card: brass at low alpha — a highlighted call to action. -->
+    <color name="resume_card_fill">#33C8A24A</color>
 </resources>

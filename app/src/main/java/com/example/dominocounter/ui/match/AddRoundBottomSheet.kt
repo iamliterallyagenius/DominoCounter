@@ -10,7 +10,6 @@ import androidx.navigation.fragment.navArgs
 import com.example.dominocounter.R
 import com.example.dominocounter.databinding.SheetAddRoundBinding
 import com.example.dominocounter.domain.model.Rules
-import com.example.dominocounter.util.padForKeyboardOrNavigationBar
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,7 +32,6 @@ class AddRoundBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val views = binding ?: return
-        views.root.padForKeyboardOrNavigationBar()
 
         val sideLabel = viewModel.state.value?.sides?.getOrNull(args.sideIndex)?.label.orEmpty()
         views.sheetTitle.text = getString(R.string.add_round_title, sideLabel)

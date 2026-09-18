@@ -70,9 +70,12 @@ interface MatchDao {
     )
     fun observeResumable(): Flow<MatchSummary?>
 
-    /** Game history: every finished match (won, lost or abandoned), most recent first. */
+    /**
+     * Game history: every match, most recent first — with unfinished ones pinned to the top,
+     * since those are the games still being played and the ones you'd want to get back to.
+     */
     @Transaction
-    @Query("SELECT * FROM matches WHERE status != 'IN_PROGRESS' ORDER BY startedAt DESC")
+    @Query("SELECT * FROM matches ORDER BY (status = 'IN_PROGRESS') DESC, startedAt DESC")
     fun observeHistory(): Flow<List<MatchDetail>>
 
     /**

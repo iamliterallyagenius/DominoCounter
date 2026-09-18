@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Player-name dropdown on the setup screen (SuggestionAdapter) ===== -->
+
+    <!-- How many suggestions show before the list scrolls. -->
+    <integer name="suggestion_max_rows">2</integer>
+
+    <!-- Width tuning. By default the list is exactly as wide as the field's outlined box and
+         starts at its left edge. Positive values widen it, negative narrow it; the offset
+         slides it right (positive) or left (negative). -->
+    <dimen name="suggestion_popup_width_adjust">0dp</dimen>
+    <dimen name="suggestion_popup_offset_adjust">0dp</dimen>
+
+    <dimen name="suggestion_row_height">48dp</dimen>
+    <!-- Space between the field and the list. -->
+    <dimen name="suggestion_gap">4dp</dimen>
+</resources>

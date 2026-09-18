@@ -1,0 +1,114 @@
+<resources>
+    <!-- Main menu -->
+    <string name="menu_new_game">Nouvelle partie</string>
+    <string name="menu_player_stats">Statistiques des joueurs</string>
+    <string name="menu_game_history">Historique des parties</string>
+    <string name="menu_settings">Paramètres</string>
+    <string name="menu_tagline">Suivez le score. Comptez les points.</string>
+    <string name="resume_title">Partie en cours</string>
+    <string name="resume_action">Reprendre</string>
+    <string name="resume_subtitle">%1$s · %2$d manches jouées</string>
+    <string name="coming_soon">%1$s arrive dans la prochaine mise à jour</string>
+
+    <!-- Setup -->
+    <string name="setup_title">Nouvelle partie</string>
+    <string name="setup_players">Joueurs</string>
+    <string name="setup_start">Lancer la partie</string>
+    <string name="setup_seat_hint">Joueur %1$d</string>
+    <string name="setup_error_duplicate">Déjà choisi</string>
+    <string name="setup_error_blank">Saisissez un nom</string>
+    <string name="setup_add_player">Ajouter un joueur</string>
+    <string name="setup_remove_player">Retirer le joueur</string>
+    <string name="format_one_v_one">1 contre 1</string>
+    <string name="format_two_v_two">2 contre 2 — équipes</string>
+    <string name="format_free_for_all">Chacun pour soi</string>
+    <string name="team_a">Équipe A</string>
+    <string name="team_b">Équipe B</string>
+
+    <!-- Scoreboard -->
+    <string name="score_target">Premier à %1$d</string>
+    <string name="score_to_win">%1$d pour gagner</string>
+    <string name="score_foul">+%1$d Faute</string>
+    <string name="score_add">Ajouter un score</string>
+    <string name="score_log_title">Journal des manches</string>
+    <string name="score_log_empty">Aucun score pour l\'instant. Ajoutez la première manche.</string>
+    <string name="score_log_total">total %1$d</string>
+    <string name="score_edited">modifié</string>
+    <string name="score_abandon">Abandonner la partie</string>
+    <string name="score_abandon_confirm">Abandonner cette partie ? Les scores seront conservés, mais la partie ne comptera dans le bilan d\'aucun joueur.</string>
+    <string name="score_locked">Cette partie est terminée et ne peut plus être modifiée</string>
+
+    <!-- Add / edit round -->
+    <string name="add_round_title">Ajouter un score pour %1$s</string>
+    <string name="add_round_manual">Saisie manuelle</string>
+    <string name="add_round_points">Points</string>
+    <string name="add_round_confirm">Ajouter</string>
+    <string name="add_round_scan">Scan par caméra (victoire normale)</string>
+    <string name="edit_round_title">Modifier la manche %1$d</string>
+    <string name="edit_round_save">Enregistrer</string>
+    <string name="edit_round_delete">Supprimer</string>
+    <string name="edit_round_deleted">Manche supprimée</string>
+
+    <!-- Victory -->
+    <string name="victory_title">Victoire de %1$s !</string>
+    <string name="victory_message">Score final %1$s</string>
+    <string name="victory_return">Retour au menu principal</string>
+    <string name="victory_rematch">Revanche</string>
+
+    <!-- Source labels -->
+    <string name="source_manual">Manuel</string>
+    <string name="source_scan">Scan</string>
+    <string name="source_foul">Faute</string>
+
+    <string name="action_cancel">Annuler</string>
+
+    <!-- Scanner prototype (step 5) -->
+    <string name="label_total">POINTS TOTAUX</string>
+    <string name="status_starting">démarrage…</string>
+    <string name="status_permission_denied">Autorisation de la caméra refusée</string>
+    <string name="status_opencv_failed">Échec du chargement d\'OpenCV</string>
+    <string name="status_camera_error">Erreur de caméra : %1$s</string>
+    <string name="hint_tap">touchez l\'écran pour changer la vue de débogage</string>
+    <string name="debug_overlay">Superposition de débogage</string>
+    <string name="mode_mask">MASQUE — ce que voit findContours.\nLes zones blanches doivent être des contours de tuiles fermés.</string>
+    <string name="mode_detections">DÉTECTIONS\nvert = compté · cyan = point\nrouge = mauvais rapport d\'aspect · jaune = faible solidité\nmagenta = trop de coins · bleu = pas assez blanc\norange = mauvais nombre de points · gris = mauvaise surface</string>
+
+    <!-- Scanner screen -->
+    <string name="scan_title">Scan par caméra</string>
+    <string name="scan_confirm">Utiliser ce score</string>
+    <string name="scan_debug_line">%1$d tuiles · brut %2$d · %3$d ms</string>
+    <string name="torch_state_on">Lampe allumée</string>
+    <string name="torch_state_off">Lampe éteinte</string>
+
+    <!-- Player stats -->
+    <string name="stats_leaderboard">Classement</string>
+    <string name="stats_record">Bilan par format</string>
+    <string name="stats_synergy">Meilleurs coéquipiers</string>
+    <string name="stats_head_to_head">Adversaires les plus coriaces</string>
+    <string name="stats_empty_leaderboard">Aucune partie terminée pour l\'instant</string>
+    <string name="stats_empty_detail">Touchez un joueur ci-dessus pour voir les détails</string>
+    <string name="stats_row_summary">%1$d/%2$d · %3$d%%</string>
+    <string name="stats_format_row">%1$s : %2$d/%3$d · %4$d%%</string>
+
+    <!-- Settings -->
+    <string name="settings_language">Langue</string>
+    <string name="settings_language_system">Par défaut du système</string>
+    <string name="settings_target_score">Score cible par défaut</string>
+    <string name="settings_target_score_value">%1$d points</string>
+    <string name="settings_torch_default">Lampe allumée par défaut</string>
+    <string name="settings_haptics">Vibration lors des fautes</string>
+    <string name="settings_scanner_debug">Superposition de débogage du scanner</string>
+    <string name="settings_scanner_debug_hint">Lorsque cette option est activée, touchez l\'aperçu de la caméra pendant un scan pour alterner entre les vues de diagnostic (masque / détections).</string>
+
+    <!-- Game history -->
+    <string name="history_empty">Aucune partie pour l\'instant</string>
+    <string name="history_abandoned">Abandonnée</string>
+    <string name="history_in_progress">En cours · touchez pour reprendre</string>
+    <string name="history_row_score">%1$s %2$d</string>
+
+    <!-- In-progress match notification -->
+    <string name="notification_channel_name">Partie en cours</string>
+    <string name="notification_channel_description">Un rappel discret avec le score en direct de votre partie en cours.</string>
+    <string name="notification_title">Partie en cours</string>
+    <string name="notification_content">%1$s · touchez pour reprendre</string>
+</resources>

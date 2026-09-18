@@ -7,10 +7,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.dominocounter.R
 import com.example.dominocounter.databinding.FragmentSettingsBinding
+import com.example.dominocounter.util.AppLanguage
 import com.example.dominocounter.util.collectWhileStarted
 import com.example.dominocounter.util.padForNavigationBar
 import com.example.dominocounter.util.padForStatusBar
 import com.example.dominocounter.util.viewBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,6 +31,9 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         binding.settingsScroll.padForNavigationBar()
         binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
 
+        binding.languageValue.setText(AppLanguage.current().label)
+        binding.languageRow.setOnClickListener { showLanguageChooser() }
+
         binding.targetScoreSlider.addOnChangeListener { _, value, fromUser ->
             binding.targetScoreValue.text = getString(R.string.settings_target_score_value, value.toInt())
             if (fromUser) viewModel.setTargetScore(value.toInt())
@@ -44,6 +49,24 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         }
 
         collectWhileStarted(viewModel.uiState, ::render)
+    }
+
+    private fun showLanguageChooser() {
+        val languages = AppLanguage.entries
+        val current = AppLanguage.current()
+
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.settings_language)
+            .setSingleChoiceItems(
+                languages.map { getString(it.label) }.toTypedArray(),
+                languages.indexOf(current)
+            ) { dialog, which ->
+                dialog.dismiss()
+                // Applying re-creates the activity, so only do it for an actual change.
+                if (languages[which] != current) languages[which].apply()
+            }
+            .setNegativeButton(R.string.action_cancel, null)
+            .show()
     }
 
     private fun render(state: SettingsUiState) {
