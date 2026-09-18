@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainMenuFragment">
+
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.example.dominocounter.ui.menu.MainMenuFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_main_menu">
+
+        <action
+            android:id="@+id/toGameSetup"
+            app:destination="@id/gameSetupFragment" />
+
+        <!-- R6: resume an IN_PROGRESS match straight from the menu. -->
+        <action
+            android:id="@+id/toMatch"
+            app:destination="@id/match_graph" />
+
+        <action
+            android:id="@+id/toPlayerStats"
+            app:destination="@id/playerStatsFragment" />
+
+        <action
+            android:id="@+id/toGameHistory"
+            app:destination="@id/gameHistoryFragment" />
+
+        <action
+            android:id="@+id/toSettings"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gameSetupFragment"
+        android:name="com.example.dominocounter.ui.setup.GameSetupFragment"
+        android:label="@string/setup_title"
+        tools:layout="@layout/fragment_game_setup">
+
+        <!-- Setup is popped: Back from the scoreboard reaches the menu,
+             never a half-filled form. -->
+        <action
+            android:id="@+id/toMatch"
+            app:destination="@id/match_graph"
+            app:popUpTo="@id/gameSetupFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Everything belonging to one live match. MatchViewModel is scoped here,
+         so the scoreboard, both sheets, the scanner and the victory dialog share one
+         instance that dies with the graph. -->
+    <navigation
+        android:id="@+id/match_graph"
+        app:startDestination="@id/scoreboardFragment">
+
+        <argument
+            android:name="matchId"
+            app:argType="long" />
+
+        <fragment
+            android:id="@+id/scoreboardFragment"
+            android:name="com.example.dominocounter.ui.match.ScoreboardFragment"
+            tools:layout="@layout/fragment_scoreboard">
+
+            <argument
+                android:name="matchId"
+                app:argType="long" />
+
+            <action
+                android:id="@+id/toAddRound"
+                app:destination="@id/addRoundBottomSheet" />
+            <action
+                android:id="@+id/toEditRound"
+                app:destination="@id/editRoundBottomSheet" />
+            <action
+                android:id="@+id/toVictory"
+                app:destination="@id/victoryDialogFragment" />
+        </fragment>
+
+        <dialog
+            android:id="@+id/addRoundBottomSheet"
+            android:name="com.example.dominocounter.ui.match.AddRoundBottomSheet">
+            <argument
+                android:name="sideIndex"
+                app:argType="integer" />
+
+            <action
+                android:id="@+id/toScanner"
+                app:destination="@id/cameraScannerFragment"
+                app:popUpTo="@id/addRoundBottomSheet"
+                app:popUpToInclusive="true" />
+        </dialog>
+
+        <dialog
+            android:id="@+id/editRoundBottomSheet"
+            android:name="com.example.dominocounter.ui.match.EditRoundBottomSheet">
+            <argument
+                android:name="roundId"
+                app:argType="long" />
+        </dialog>
+
+        <fragment
+            android:id="@+id/cameraScannerFragment"
+            android:name="com.example.dominocounter.ui.scanner.CameraScannerFragment"
+            tools:layout="@layout/fragment_camera_scanner">
+            <argument
+                android:name="sideIndex"
+                app:argType="integer" />
+        </fragment>
+
+        <!-- No args: reads the finished state from the graph-scoped MatchViewModel. -->
+        <dialog
+            android:id="@+id/victoryDialogFragment"
+            android:name="com.example.dominocounter.ui.match.VictoryDialogFragment">
+
+            <!-- Pops this whole match_graph instance (scoreboard + dialog) and enters a
+                 fresh one with the new match's id — same shape as leaving via Setup. -->
+            <action
+                android:id="@+id/toRematch"
+                app:destination="@id/match_graph"
+                app:popUpTo="@id/match_graph"
+                app:popUpToInclusive="true" />
+        </dialog>
+    </navigation>
+
+    <!-- ============ LEAVES ============ -->
+    <fragment
+        android:id="@+id/playerStatsFragment"
+        android:name="com.example.dominocounter.ui.stats.PlayerStatsFragment"
+        android:label="@string/menu_player_stats"
+        tools:layout="@layout/fragment_player_stats" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.dominocounter.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/gameHistoryFragment"
+        android:name="com.example.dominocounter.ui.history.GameHistoryFragment"
+        android:label="@string/menu_game_history"
+        tools:layout="@layout/fragment_game_history">
+
+        <action
+            android:id="@+id/toMatchHistoryDetail"
+            app:destination="@id/matchHistoryDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/matchHistoryDetailFragment"
+        android:name="com.example.dominocounter.ui.history.MatchHistoryDetailFragment"
+        tools:layout="@layout/fragment_match_history_detail">
+        <argument
+            android:name="matchId"
+            app:argType="long" />
+    </fragment>
+</navigation>

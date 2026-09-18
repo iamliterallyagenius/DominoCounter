@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Card-table palette: felt green, brass, ivory tiles. -->
+    <color name="felt">#1B5E44</color>
+    <color name="felt_dark">#0E3A2A</color>
+    <color name="felt_light">#2E8B65</color>
+    <color name="brass">#C8A24A</color>
+    <color name="ivory">#F5F1E6</color>
+    <color name="ink">#14181C</color>
+
+    <!-- One colour per side. Index matches MatchState.sides. -->
+    <color name="side_0">#2E8B65</color>
+    <color name="side_1">#C8703A</color>
+    <color name="side_2">#5A6FC0</color>
+
+    <color name="log_foul">#C0392B</color>
+    <color name="log_scan">#2E86AB</color>
+</resources>

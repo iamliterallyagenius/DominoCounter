@@ -1,0 +1,13 @@
+# Heavy build outputs and binaries — never worth reading into context.
+/build
+app/build
+.gradle
+.idea
+.cxx
+.externalNativeBuild
+
+*.apk
+*.aab
+*.so
+*.jar
+*.dex

@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Same card-table identity as the light theme, re-balanced for a dark surface:
+         felt_light stands in for felt (readable on dark), felt_dark becomes the
+         container tone instead of felt_light, ink replaces ivory as the on-primary text. -->
+    <style name="Theme.DominoCounter" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/felt_light</item>
+        <item name="colorOnPrimary">@color/ink</item>
+        <item name="colorPrimaryContainer">@color/felt_dark</item>
+        <item name="colorSecondary">@color/brass</item>
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+</resources>

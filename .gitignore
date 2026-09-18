@@ -1,0 +1,52 @@
+# ---- Gradle ----
+.gradle/
+**/build/
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
+
+# ---- Android Studio / IntelliJ ----
+*.iml
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/deploymentTargetDropDown.xml
+.idea/*.xml
+.navigation/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ---- Kotlin / KSP ----
+.kotlin/
+
+# ---- C++ / CMake / NDK build artifacts ----
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.o
+*.so
+
+# ---- Local config (never commit machine-specific paths or secrets) ----
+local.properties
+key.properties
+*.jks
+*.keystore
+*.p12
+
+# ---- Claude Code local session/config ----
+.claude.json
+
+# ---- Packaged output ----
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# ---- OS cruft ----
+.DS_Store
+Thumbs.db
