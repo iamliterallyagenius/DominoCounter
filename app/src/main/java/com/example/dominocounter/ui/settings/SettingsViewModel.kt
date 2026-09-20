@@ -16,7 +16,7 @@ data class SettingsUiState(
     val targetScore: Int = Rules.DEFAULT_TARGET_SCORE,
     val torchDefaultOn: Boolean = false,
     val hapticsEnabled: Boolean = true,
-    val scannerDebugEnabled: Boolean = false
+    val saveScanPhotos: Boolean = false
 )
 
 @HiltViewModel
@@ -28,9 +28,9 @@ class SettingsViewModel @Inject constructor(
         settingsRepository.targetScore,
         settingsRepository.torchDefaultOn,
         settingsRepository.hapticsEnabled,
-        settingsRepository.scannerDebugEnabled
-    ) { target, torch, haptics, scannerDebug ->
-        SettingsUiState(target, torch, haptics, scannerDebug)
+        settingsRepository.saveScanPhotos
+    ) { target, torch, haptics, saveScans ->
+        SettingsUiState(target, torch, haptics, saveScans)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SettingsUiState())
 
     fun setTargetScore(value: Int) = viewModelScope.launch { settingsRepository.setTargetScore(value) }
@@ -41,6 +41,6 @@ class SettingsViewModel @Inject constructor(
     fun setHapticsEnabled(value: Boolean) =
         viewModelScope.launch { settingsRepository.setHapticsEnabled(value) }
 
-    fun setScannerDebugEnabled(value: Boolean) =
-        viewModelScope.launch { settingsRepository.setScannerDebugEnabled(value) }
+    fun setSaveScanPhotos(value: Boolean) =
+        viewModelScope.launch { settingsRepository.setSaveScanPhotos(value) }
 }

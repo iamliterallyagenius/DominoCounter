@@ -169,7 +169,7 @@ data class RoundEntity(
 
 `rawPipTotal` costs one nullable column and buys a real accuracy metric: after a few hundred
 scans you can query how often the user corrected the scanner and by how much, which is how
-`DetectionConfig` gets tuned against reality instead of a hunch.
+you learn whether the detector needs retraining on more photos instead of guessing.
 
 ### 3.6 Enums
 
@@ -375,7 +375,7 @@ Every screen: one immutable `…UiState` as `StateFlow`, plus a `Channel` for on
 | `MainMenuViewModel` | Fragment | most recent `IN_PROGRESS` match → Resume card |
 | `GameSetupViewModel` | Fragment | seats, player suggestions, format derivation, validation |
 | `MatchViewModel` | **`match_graph`** | the live match; shared with sheets + scanner |
-| `ScannerViewModel` | Fragment | live CV detections, torch state |
+| `ScannerViewModel` | Fragment | scan phase, editable pip markers, torch state |
 | `PlayerStatsViewModel` | Fragment | records, synergy, head-to-head |
 | `SettingsViewModel` | Fragment | DataStore-backed prefs |
 
@@ -411,29 +411,34 @@ ViewModel runs one `@Transaction` — write `match_sides`, set `winningSide`, `f
 `status = COMPLETED` — then emits a one-shot `ShowVictory`. Immutability (R5) is enforced at
 the repository (`UPDATE … WHERE status = 'IN_PROGRESS'`), not merely by hiding buttons.
 
-### ScannerViewModel + the CV refactor
+### ScannerViewModel + the pip detector
 
-The current analyzer emits a debug `Bitmap`. `OverlayView` needs geometry, not pixels:
+The first scanner was tile-first computer vision: segment the tiles, warp each one upright,
+count the pips inside. It needed a plain dark table and merged touching tiles into one blob,
+which is exactly how dominoes sit. The score is only the *total* number of pips on the table,
+so the scanner now ignores tiles entirely and finds pips directly.
 
-```kotlin
-data class DetectedTile(val corners: FloatArray, val pipCount: Int)   // analysis-image coords
-data class ScanFrame(
-    val tiles: List<DetectedTile>,
-    val total: Int,
-    val sourceSize: Size,
-    val rotationDegrees: Int,
-    val frameTimeMs: Long
-)
+`detect/PipDetector` runs a small YOLO model (LiteRT, `assets/pip_detector.tflite`) once per
+photo and returns one marker per pip — or per labelled pip cluster, in which case
+`assets/pip_model.json` says how many pips each class is worth. Input size and output layout
+are read from the model, so retraining never means editing the detector. Decoding and
+non-maximum suppression live in `YoloDecoder`, pure Kotlin and unit-tested.
+
+The screen is a still-photo flow rather than live video, so the model can run at a
+resolution high enough for small pips and still feel instant:
+
+```
+PREVIEW ──shutter──▶ ANALYZING ──▶ REVIEW ──confirm──▶ commitScan()
+   ▲                                  │
+   └────────────── retake ────────────┘
 ```
 
-`DominoAnalyzer` exposes `Flow<ScanFrame>` (a `MutableStateFlow` written on the analysis
-thread, `conflate()`d out). `OverlayView` gets tiles plus a `Matrix` mapping analysis space →
-view space, accounting for rotation, the analysis/preview aspect difference and
-`PreviewView`'s `FILL_CENTER` crop. That matrix is the one genuinely fiddly part of screen 4
-and gets its own step.
+In REVIEW the photo is shown with a marker on every pip (`ScanReviewView`: pinch to zoom, tap
+a marker to remove it, tap bare table to add one). The committed score is the corrected
+total; `rawPipTotal` keeps what the model said before the correction, so the gap between the
+two is a real accuracy metric. `detectedTileCount` now stores the number of markers.
 
-Torch: `cameraControl.enableTorch()`, availability from `cameraInfo.hasFlashUnit()`, actual
-state observed from `cameraInfo.torchState` — never assumed from the button.
+The model is trained in `training/train_pip_detector.ipynb` (Colab, free GPU).
 
 ---
 
@@ -442,10 +447,7 @@ state observed from `cameraInfo.torchState` — never assumed from the button.
 **DataStore (Preferences)**, not Room: key-value config with no queries, and keeping it out
 of the DB avoids a migration per toggle.
 
-Default target score · torch-on-by-default · haptics · and a **Scanner tuning** section
-writing to `DetectionConfig` (`minSurroundContrast`, `brightAboveOtsu`, `cannyHighScale`).
-Those are the knobs that proved to matter per-table; letting the user nudge them beats
-shipping one guess for every kitchen.
+Default target score · torch-on-by-default · haptics.
 
 ---
 
@@ -458,7 +460,7 @@ shipping one guess for every kitchen.
    match creation.
 4. **ScoreboardFragment** — N side panels, foul button, audit log, add/edit/delete sheets.
    *The app is fully usable, manual-entry only, at the end of this step.*
-5. **CameraScannerFragment + OverlayView** — CV port, geometry emission, coordinate matrix, torch.
+5. **CameraScannerFragment + ScanReviewView** — pip detector, still capture, tap-to-fix review, torch.
 6. **VictoryDialogFragment** + completion transaction.
 7. **PlayerStatsFragment** — records by format, synergy, head-to-head.
 8. **SettingsFragment**.

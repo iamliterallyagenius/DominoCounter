@@ -112,21 +112,21 @@
                 android:text="@string/settings_haptics" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/scannerDebugSwitch"
+                android:id="@+id/saveScansSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:drawableStart="@drawable/ic_tune"
+                android:drawableStart="@drawable/ic_photo"
                 android:drawablePadding="14dp"
                 android:drawableTint="?attr/colorOnSurfaceVariant"
-                android:text="@string/settings_scanner_debug" />
+                android:text="@string/settings_save_scans" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:alpha="0.6"
-                android:text="@string/settings_scanner_debug_hint"
+                android:text="@string/settings_save_scans_hint"
                 android:textAppearance="?attr/textAppearanceBodySmall" />
         </LinearLayout>
     </ScrollView>

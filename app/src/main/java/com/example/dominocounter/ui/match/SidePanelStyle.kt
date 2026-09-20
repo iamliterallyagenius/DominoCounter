@@ -1,9 +1,11 @@
 package com.example.dominocounter.ui.match
 
 import android.content.Context
+import android.util.TypedValue
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import com.example.dominocounter.databinding.ViewSidePanelBinding
+import com.google.android.material.R
 
 /**
  * Ties a side panel to its side's identity colour: a tonal fill (stronger while leading), a
@@ -14,11 +16,18 @@ fun ViewSidePanelBinding.applySideColor(context: Context, sideIndex: Int, isLead
     val color = ContextCompat.getColor(context, RoundLogAdapter.sideColor(sideIndex))
     val density = context.resources.displayMetrics.density
 
+    val typedValue = TypedValue()
+    context.theme.resolveAttribute(R.attr.colorSurface, typedValue, true)
+    val surfaceColor = typedValue.data
+    val ratio = if (isLeading) 0.33f else 0.20f
+    val backgroundColor = ColorUtils.blendARGB(surfaceColor, color, ratio)
+
     sideStripe.setBackgroundColor(color)
     sideScore.setTextColor(color)
-    sideCard.setCardBackgroundColor(ColorUtils.setAlphaComponent(color, if (isLeading) 0x55 else 0x33))
+    sideCard.setCardBackgroundColor(backgroundColor)
     sideCard.strokeColor = color
     sideCard.strokeWidth = if (isLeading) (LEADING_STROKE_DP * density).toInt() else 0
 }
 
 private const val LEADING_STROKE_DP = 2.5f
+

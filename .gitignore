@@ -50,3 +50,6 @@ key.properties
 # ---- OS cruft ----
 .DS_Store
 Thumbs.db
+
+# ---- Large datasets / archives (too big for GitHub) ----
+*.zip

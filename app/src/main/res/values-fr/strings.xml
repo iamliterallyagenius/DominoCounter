@@ -43,7 +43,7 @@
     <string name="add_round_manual">Saisie manuelle</string>
     <string name="add_round_points">Points</string>
     <string name="add_round_confirm">Ajouter</string>
-    <string name="add_round_scan">Scan par caméra (victoire normale)</string>
+    <string name="add_round_scan">Scan par caméra</string>
     <string name="edit_round_title">Modifier la manche %1$d</string>
     <string name="edit_round_save">Enregistrer</string>
     <string name="edit_round_delete">Supprimer</string>
@@ -62,24 +62,27 @@
 
     <string name="action_cancel">Annuler</string>
 
-    <!-- Scanner prototype (step 5) -->
+    <!-- Scanner -->
     <string name="label_total">POINTS TOTAUX</string>
-    <string name="status_starting">démarrage…</string>
     <string name="status_permission_denied">Autorisation de la caméra refusée</string>
-    <string name="status_opencv_failed">Échec du chargement d\'OpenCV</string>
     <string name="status_camera_error">Erreur de caméra : %1$s</string>
-    <string name="hint_tap">touchez l\'écran pour changer la vue de débogage</string>
-    <string name="debug_overlay">Superposition de débogage</string>
-    <string name="mode_mask">MASQUE — ce que voit findContours.\nLes zones blanches doivent être des contours de tuiles fermés.</string>
-    <string name="mode_detections">DÉTECTIONS\nvert = compté · cyan = point\nrouge = mauvais rapport d\'aspect · jaune = faible solidité\nmagenta = trop de coins · bleu = pas assez blanc\norange = mauvais nombre de points · gris = mauvaise surface</string>
 
     <!-- Scanner screen -->
     <string name="scan_title">Scan par caméra</string>
     <string name="scan_confirm">Utiliser ce score</string>
-    <string name="scan_debug_line">%1$d tuiles · brut %2$d · %3$d ms</string>
     <string name="torch_state_on">Lampe allumée</string>
     <string name="torch_state_off">Lampe éteinte</string>
-
+    <string name="scan_capture">Scanner</string>
+    <string name="scan_retake">Reprendre</string>
+    <string name="scan_analyzing">Comptage des points…</string>
+    <string name="scan_hint_capture">Posez les dominos face visible, tous dans le cadre, puis touchez Scanner.</string>
+    <string name="scan_hint_review">Touchez un point pour le retirer. Touchez la table pour ajouter un point oublié.</string>
+    <string name="scan_hint_empty">Aucun point détecté. Touchez la table pour en ajouter ou reprenez la photo.</string>
+    <string name="scan_timing">%1$d ms</string>
+    <string name="scan_photo_description">Photo des dominos</string>
+    <string name="status_model_missing">Modèle de scan non installé. Ajoutez le modèle entraîné à l\'application (voir training/).</string>
+    <string name="status_model_failed">Impossible de charger le modèle de scan : %1$s</string>
+    <string name="status_detect_failed">Impossible d\'analyser la photo : %1$s</string>
     <!-- Player stats -->
     <string name="stats_leaderboard">Classement</string>
     <string name="stats_record">Bilan par format</string>
@@ -97,8 +100,8 @@
     <string name="settings_target_score_value">%1$d points</string>
     <string name="settings_torch_default">Lampe allumée par défaut</string>
     <string name="settings_haptics">Vibration lors des fautes</string>
-    <string name="settings_scanner_debug">Superposition de débogage du scanner</string>
-    <string name="settings_scanner_debug_hint">Lorsque cette option est activée, touchez l\'aperçu de la caméra pendant un scan pour alterner entre les vues de diagnostic (masque / détections).</string>
+    <string name="settings_save_scans">Enregistrer les photos de scan pour l\'entraînement</string>
+    <string name="settings_save_scans_hint">Conserve une photo de chaque scan confirmé dans Pictures/DominoScans, avec le score dans le nom du fichier. Sert à tester et améliorer le scanner.</string>
 
     <!-- Game history -->
     <string name="history_empty">Aucune partie pour l\'instant</string>

@@ -44,8 +44,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         binding.hapticsSwitch.setOnCheckedChangeListener { _, checked ->
             if (!applyingState) viewModel.setHapticsEnabled(checked)
         }
-        binding.scannerDebugSwitch.setOnCheckedChangeListener { _, checked ->
-            if (!applyingState) viewModel.setScannerDebugEnabled(checked)
+        binding.saveScansSwitch.setOnCheckedChangeListener { _, checked ->
+            if (!applyingState) viewModel.setSaveScanPhotos(checked)
         }
 
         collectWhileStarted(viewModel.uiState, ::render)
@@ -79,7 +79,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         binding.targetScoreValue.text = getString(R.string.settings_target_score_value, state.targetScore)
         binding.torchSwitch.isChecked = state.torchDefaultOn
         binding.hapticsSwitch.isChecked = state.hapticsEnabled
-        binding.scannerDebugSwitch.isChecked = state.scannerDebugEnabled
+        binding.saveScansSwitch.isChecked = state.saveScanPhotos
 
         applyingState = false
     }

@@ -21,7 +21,8 @@ import com.example.dominocounter.domain.model.MatchStatus
 import java.util.Date
 
 class MatchHistoryAdapter(
-    private val onClick: (MatchState) -> Unit
+    private val onClick: (MatchState) -> Unit,
+    private val onAbandonClick: (MatchState) -> Unit
 ) : ListAdapter<MatchState, MatchHistoryAdapter.ViewHolder>(Diff) {
 
     class ViewHolder(val binding: ItemMatchHistoryBinding) : RecyclerView.ViewHolder(binding.root)
@@ -65,6 +66,7 @@ class MatchHistoryAdapter(
 
         bindStatus(holder.binding, item.status)
 
+        holder.binding.abandonButton.setOnClickListener { onAbandonClick(item) }
         holder.binding.root.setOnClickListener { onClick(item) }
     }
 
@@ -83,6 +85,7 @@ class MatchHistoryAdapter(
             MatchStatus.COMPLETED -> null to null
         }
         binding.historyStatus.visibility = if (label == null) View.GONE else View.VISIBLE
+        binding.abandonButton.visibility = if (inProgress) View.VISIBLE else View.GONE
         if (label != null && colorRes != null) {
             binding.historyStatus.setText(label)
             binding.historyStatus.setTextColor(ContextCompat.getColor(context, colorRes))

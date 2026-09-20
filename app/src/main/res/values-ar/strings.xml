@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Main menu -->
+    <string name="menu_new_game">لعبة جديدة</string>
+    <string name="menu_player_stats">إحصائيات اللاعبين</string>
+    <string name="menu_game_history">سجل المباريات</string>
+    <string name="menu_settings">الإعدادات</string>
+    <string name="menu_tagline">سجل النقاط. واحتسب النقاط الدقيقة.</string>
+    <string name="resume_title">مباراة جارية</string>
+    <string name="resume_action">استئناف</string>
+    <string name="resume_subtitle">%1$s · لُعبت %2$d جولات</string>
+    <string name="coming_soon">ستصل %1$s في التحديث القادم</string>
+
+    <!-- Setup -->
+    <string name="setup_title">مباراة جديدة</string>
+    <string name="setup_players">اللاعبون</string>
+    <string name="setup_start">بدء المباراة</string>
+    <string name="setup_seat_hint">لاعب %1$d</string>
+    <string name="setup_error_duplicate">تم اختياره بالفعل</string>
+    <string name="setup_error_blank">أدخل اسماً</string>
+    <string name="setup_add_player">إضافة لاعب</string>
+    <string name="setup_remove_player">إزالة اللاعب</string>
+    <string name="format_one_v_one">1 ضد 1</string>
+    <string name="format_two_v_two">2 ضد 2 — فرق</string>
+    <string name="format_free_for_all">للجميع — كل لاعب لنفسه</string>
+    <string name="team_a">الفريق أ</string>
+    <string name="team_b">الفريق ب</string>
+
+    <!-- Scoreboard -->
+    <string name="score_target">أول من يصل إلى %1$d</string>
+    <string name="score_to_win">%1$d للفوز</string>
+    <string name="score_foul">+%1$d خطأ</string>
+    <string name="score_add">إضافة نقطة الجولة</string>
+    <string name="score_log_title">سجل الجولات</string>
+    <string name="score_log_empty">لا توجد نقاط بعد. أضف الجولة الأولى.</string>
+    <string name="score_log_total">إجمالي %1$d</string>
+    <string name="score_edited">تم تعديله</string>
+    <string name="score_abandon">إلغاء المباراة</string>
+    <string name="score_abandon_confirm">هل تريد إلغاء هذه المباراة؟ سيتم الاحتفاظ بالنقاط ولكن لن تُحتسب المباراة في سجل أي لاعب.</string>
+    <string name="score_locked">هذه المباراة منتهية ولا يمكن تعديلها</string>
+
+    <!-- Add / edit round -->
+    <string name="add_round_title">إضافة نقطة لـ %1$s</string>
+    <string name="add_round_manual">إدخال يدوي</string>
+    <string name="add_round_points">النقاط</string>
+    <string name="add_round_confirm">إضافة</string>
+    <string name="add_round_scan">مسح بالكاميرا</string>
+    <string name="edit_round_title">تعديل الجولة %1$d</string>
+    <string name="edit_round_save">حفظ</string>
+    <string name="edit_round_delete">حذف</string>
+    <string name="edit_round_deleted">تم حذف الجولة</string>
+
+    <!-- Victory -->
+    <string name="victory_title">فاز %1$s!</string>
+    <string name="victory_message">النتيجة النهائية %1$s</string>
+    <string name="victory_return">العودة للقائمة الرئيسية</string>
+    <string name="victory_rematch">إعادة المباراة</string>
+
+    <!-- Source labels -->
+    <string name="source_manual">يدوي</string>
+    <string name="source_scan">مسح</string>
+    <string name="source_foul">خطأ</string>
+
+    <string name="action_cancel">إلغاء</string>
+
+    <!-- Scanner -->
+    <string name="label_total">إجمالي النقاط</string>
+    <string name="status_permission_denied">تم رفض إذن الكاميرا</string>
+    <string name="status_camera_error">خطأ في الكاميرا: %1$s</string>
+
+    <!-- Scanner screen -->
+    <string name="scan_title">مسح بالكاميرا</string>
+    <string name="scan_confirm">استخدام هذه النتيجة</string>
+    <string name="torch_state_on">الكشاف مفعّل</string>
+    <string name="torch_state_off">الكشاف معطّل</string>
+    <string name="scan_capture">مسح</string>
+    <string name="scan_retake">إعادة التصوير</string>
+    <string name="scan_analyzing">جارٍ عدّ النقاط…</string>
+    <string name="scan_hint_capture">ضع قطع الدومينو مكشوفة وضمن الإطار كاملةً، ثم اضغط على مسح.</string>
+    <string name="scan_hint_review">اضغط على نقطة لإزالتها. اضغط على الطاولة لإضافة نقطة فاتتك.</string>
+    <string name="scan_hint_empty">لم يتم العثور على نقاط. اضغط على الطاولة لإضافتها أو أعد التصوير.</string>
+    <string name="scan_timing">%1$d ملّي ثانية</string>
+    <string name="scan_photo_description">صورة قطع الدومينو</string>
+    <string name="status_model_missing">نموذج المسح غير مثبّت. أضف النموذج المدرَّب إلى التطبيق (راجع training/).</string>
+    <string name="status_model_failed">تعذّر تحميل نموذج المسح: %1$s</string>
+    <string name="status_detect_failed">تعذّر تحليل الصورة: %1$s</string>
+    <!-- Player stats -->
+    <string name="stats_leaderboard">لوحة الصدارة</string>
+    <string name="stats_record">السجل حسب التنسيق</string>
+    <string name="stats_synergy">أفضل الزملاء</string>
+    <string name="stats_head_to_head">أشرس المنافسين</string>
+    <string name="stats_empty_leaderboard">لا توجد مباريات مكتملة بعد</string>
+    <string name="stats_empty_detail">اضغط على أي لاعب أعلاه لعرض التفاصيل</string>
+    <string name="stats_row_summary">%1$d/%2$d · %3$d%%</string>
+    <string name="stats_format_row">%1$s: %2$d/%3$d · %4$d%%</string>
+
+    <!-- Settings -->
+    <string name="settings_language">اللغة</string>
+    <string name="settings_language_system">افتراضي النظام</string>
+    <string name="settings_target_score">النتيجة المستهدفة الافتراضية</string>
+    <string name="settings_target_score_value">%1$d نقاط</string>
+    <string name="settings_torch_default">تشغيل الكشاف افتراضياً</string>
+    <string name="settings_haptics">ردود الفعل اللمسية عند الأخطاء</string>
+    <string name="settings_save_scans">حفظ صور المسح للتدريب</string>
+    <string name="settings_save_scans_hint">يحتفظ بصورة لكل مسح مؤكَّد في Pictures/DominoScans، مع النتيجة في اسم الملف. تُستخدم لاختبار الماسح الضوئي وتحسينه.</string>
+
+    <!-- Game history -->
+    <string name="history_empty">لا توجد مباريات بعد</string>
+    <string name="history_abandoned">ملغاة</string>
+    <string name="history_in_progress">جارية · اضغط للاستئناف</string>
+    <string name="history_row_score">%1$s %2$d</string>
+
+    <!-- In-progress match notification -->
+    <string name="notification_channel_name">مباراة جارية</string>
+    <string name="notification_channel_description">تذكير هادئ ومستمر بالنتيجة المباشرة لمباراتك الحالية.</string>
+    <string name="notification_title">مباراة جارية</string>
+    <string name="notification_content">%1$s · اضغط للاستئناف</string>
+</resources>

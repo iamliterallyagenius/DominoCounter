@@ -28,7 +28,7 @@ class SettingsRepository @Inject constructor(
         val TARGET_SCORE = intPreferencesKey("target_score")
         val TORCH_DEFAULT_ON = booleanPreferencesKey("torch_default_on")
         val HAPTICS_ENABLED = booleanPreferencesKey("haptics_enabled")
-        val SCANNER_DEBUG_ENABLED = booleanPreferencesKey("scanner_debug_enabled")
+        val SAVE_SCAN_PHOTOS = booleanPreferencesKey("save_scan_photos")
     }
 
     /** R3's default — snapshotted per match at creation, never re-read from here afterwards. */
@@ -41,9 +41,9 @@ class SettingsRepository @Inject constructor(
     val hapticsEnabled: Flow<Boolean> = context.settingsDataStore.data
         .map { it[Keys.HAPTICS_ENABLED] ?: true }
 
-    /** Off by default: the mask/detections overlay is a diagnostic tool, not a player-facing feature. */
-    val scannerDebugEnabled: Flow<Boolean> = context.settingsDataStore.data
-        .map { it[Keys.SCANNER_DEBUG_ENABLED] ?: false }
+    /** Off by default: keeps a photo of every confirmed scan, which uses storage. */
+    val saveScanPhotos: Flow<Boolean> = context.settingsDataStore.data
+        .map { it[Keys.SAVE_SCAN_PHOTOS] ?: false }
 
     suspend fun setTargetScore(value: Int) {
         context.settingsDataStore.edit { it[Keys.TARGET_SCORE] = value }
@@ -57,7 +57,7 @@ class SettingsRepository @Inject constructor(
         context.settingsDataStore.edit { it[Keys.HAPTICS_ENABLED] = value }
     }
 
-    suspend fun setScannerDebugEnabled(value: Boolean) {
-        context.settingsDataStore.edit { it[Keys.SCANNER_DEBUG_ENABLED] = value }
+    suspend fun setSaveScanPhotos(value: Boolean) {
+        context.settingsDataStore.edit { it[Keys.SAVE_SCAN_PHOTOS] = value }
     }
 }

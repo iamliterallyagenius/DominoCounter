@@ -48,7 +48,7 @@
     <string name="add_round_manual">Manual entry</string>
     <string name="add_round_points">Points</string>
     <string name="add_round_confirm">Add</string>
-    <string name="add_round_scan">Camera Scan (Normal Win)</string>
+    <string name="add_round_scan">Camera Scan</string>
     <string name="edit_round_title">Edit round %1$d</string>
     <string name="edit_round_save">Save</string>
     <string name="edit_round_delete">Delete</string>
@@ -67,25 +67,28 @@
 
     <string name="action_cancel">Cancel</string>
 
-    <!-- Scanner prototype (step 5) -->
+    <!-- Scanner -->
     <string name="label_total">TOTAL POINTS</string>
     <string name="zero" translatable="false">0</string>
-    <string name="status_starting">starting…</string>
     <string name="status_permission_denied">Camera permission denied</string>
-    <string name="status_opencv_failed">OpenCV failed to load</string>
     <string name="status_camera_error">Camera error: %1$s</string>
-    <string name="hint_tap">tap anywhere to cycle debug view</string>
-    <string name="debug_overlay">Debug overlay</string>
-    <string name="mode_mask">MASK — what findContours sees.\nWhite blobs must be closed tile outlines.</string>
-    <string name="mode_detections">DETECTIONS\ngreen = counted · cyan = pip\nred = bad aspect · yellow = low solidity\nmagenta = too many corners · blue = not white enough\norange = bad pip count · grey = wrong area</string>
 
     <!-- Scanner screen -->
     <string name="scan_title">Camera Scan</string>
     <string name="scan_confirm">Use this score</string>
-    <string name="scan_debug_line">%1$d tiles · raw %2$d · %3$d ms</string>
     <string name="torch_state_on">Torch On</string>
     <string name="torch_state_off">Torch Off</string>
-
+    <string name="scan_capture">Scan</string>
+    <string name="scan_retake">Retake</string>
+    <string name="scan_analyzing">Counting pips…</string>
+    <string name="scan_hint_capture">Lay the tiles face up, fit them all in view, then tap Scan.</string>
+    <string name="scan_hint_review">Tap a dot to remove it. Tap the table to add a missed pip.</string>
+    <string name="scan_hint_empty">No pips found. Tap the table to add them, or retake the photo.</string>
+    <string name="scan_timing">%1$d ms</string>
+    <string name="scan_photo_description">Photo of the tiles</string>
+    <string name="status_model_missing">Scanner model not installed. Add the trained model to the app (see training/).</string>
+    <string name="status_model_failed">Couldn\'t load the scanner model: %1$s</string>
+    <string name="status_detect_failed">Couldn\'t analyse the photo: %1$s</string>
     <!-- Player stats -->
     <string name="stats_leaderboard">Leaderboard</string>
     <string name="stats_record">Record by format</string>
@@ -102,12 +105,13 @@
     <!-- Each language is always shown under its own name, whatever language the app is in. -->
     <string name="settings_language_english" translatable="false">English</string>
     <string name="settings_language_french" translatable="false">Français</string>
+    <string name="settings_language_arabic" translatable="false">العربية</string>
     <string name="settings_target_score">Default target score</string>
     <string name="settings_target_score_value">%1$d points</string>
     <string name="settings_torch_default">Torch on by default</string>
     <string name="settings_haptics">Haptic feedback on fouls</string>
-    <string name="settings_scanner_debug">Scanner debug overlay</string>
-    <string name="settings_scanner_debug_hint">When on, tap the camera preview during a scan to cycle through diagnostic views (mask / detections).</string>
+    <string name="settings_save_scans">Save scan photos for training</string>
+    <string name="settings_save_scans_hint">Keeps a photo of each confirmed scan in Pictures/DominoScans, with the score in the file name. Used to test and improve the scanner.</string>
 
     <!-- Game history -->
     <string name="history_empty">No matches yet</string>

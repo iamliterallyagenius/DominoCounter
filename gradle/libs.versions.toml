@@ -15,7 +15,7 @@ lifecycle = "2.8.7"
 room = "2.6.1"
 datastore = "1.1.1"
 camerax = "1.4.1"
-opencv = "4.14.0"
+litert = "1.4.2"
 truth = "1.4.4"
 coroutinesTest = "1.9.0"
 junit = "4.13.2"
@@ -51,7 +51,7 @@ androidx-camera-camera2 = { group = "androidx.camera", name = "camera-camera2", 
 androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "camerax" }
 androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "camerax" }
 
-opencv = { group = "org.opencv", name = "opencv", version.ref = "opencv" }
+litert = { group = "com.google.ai.edge.litert", name = "litert", version.ref = "litert" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }

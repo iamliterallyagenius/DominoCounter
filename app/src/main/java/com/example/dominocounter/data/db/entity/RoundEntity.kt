@@ -39,10 +39,10 @@ data class RoundEntity(
     val detectedTileCount: Int? = null,
 
     /**
-     * What the CV reported BEFORE any user correction. One nullable column buys a real
-     * accuracy metric: after a few hundred scans you can measure how often the scanner
-     * was corrected and by how much, which is how DetectionConfig gets tuned against
-     * reality instead of a hunch.
+     * What the pip detector reported BEFORE any user correction. One nullable column buys a
+     * real accuracy metric: after a few hundred scans you can measure how often the scanner
+     * was corrected and by how much, which tells you whether the model needs retraining on
+     * more photos instead of guessing.
      */
     val rawPipTotal: Int? = null
 )

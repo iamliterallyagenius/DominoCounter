@@ -14,7 +14,8 @@ import com.example.dominocounter.R
 enum class AppLanguage(val tag: String?, @StringRes val label: Int) {
     SYSTEM(null, R.string.settings_language_system),
     ENGLISH("en", R.string.settings_language_english),
-    FRENCH("fr", R.string.settings_language_french);
+    FRENCH("fr", R.string.settings_language_french),
+    ARABIC("ar", R.string.settings_language_arabic);
 
     fun apply() {
         AppCompatDelegate.setApplicationLocales(

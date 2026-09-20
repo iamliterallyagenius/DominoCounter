@@ -18,6 +18,8 @@
 
     <color name="log_foul">#C0392B</color>
     <color name="log_scan">#2E86AB</color>
+    <!-- Markers drawn over the scanned photo: bright enough to read on wood, felt or paper. -->
+    <color name="scan_pip_detected">#3DDC84</color>
 
     <!-- Game-history status lines; the night variants keep the same contrast on a dark card. -->
     <color name="status_in_progress">#7A5C00</color>

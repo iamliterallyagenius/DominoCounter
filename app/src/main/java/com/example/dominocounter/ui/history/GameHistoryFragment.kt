@@ -13,6 +13,7 @@ import com.example.dominocounter.util.collectWhileStarted
 import com.example.dominocounter.util.padForNavigationBar
 import com.example.dominocounter.util.padForStatusBar
 import com.example.dominocounter.util.viewBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +31,7 @@ class GameHistoryFragment : Fragment(R.layout.fragment_game_history) {
         binding.historyList.padForNavigationBar()
         binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
 
-        adapter = MatchHistoryAdapter(::openMatch)
+        adapter = MatchHistoryAdapter(::openMatch, ::confirmAbandon)
         binding.historyList.layoutManager = LinearLayoutManager(requireContext())
         binding.historyList.adapter = adapter
 
@@ -48,5 +49,14 @@ class GameHistoryFragment : Fragment(R.layout.fragment_game_history) {
             GameHistoryFragmentDirections.toMatchHistoryDetail(match.matchId)
         }
         findNavController().navigate(directions)
+    }
+
+    private fun confirmAbandon(match: MatchState) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.score_abandon)
+            .setMessage(R.string.score_abandon_confirm)
+            .setNegativeButton(R.string.action_cancel, null)
+            .setPositiveButton(R.string.score_abandon) { _, _ -> viewModel.abandonMatch(match.matchId) }
+            .show()
     }
 }

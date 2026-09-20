@@ -13,7 +13,14 @@ data class Seat(
     val seatIndex: Int
 )
 
-/** What the scanner saw, kept so scanner accuracy can be measured against corrections. */
+/**
+ * What the scanner saw, kept so scanner accuracy can be measured against corrections.
+ *
+ * @param detectedTileCount how many markers the detector returned (single pips, or pip clusters for a
+ *        cluster model). Named for the column it is stored in; the tile-finding scanner it was
+ *        named after is gone, and renaming would need a Room migration for no behavioural gain.
+ * @param rawPipTotal the pip total the detector reported BEFORE the player corrected it
+ */
 data class ScanAudit(
     val detectedTileCount: Int,
     val rawPipTotal: Int

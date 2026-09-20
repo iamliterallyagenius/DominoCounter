@@ -45,6 +45,16 @@ android {
     packaging {
         jniLibs { useLegacyPackaging = false }
     }
+
+    // The detector memory-maps its model straight out of the APK, which only works uncompressed.
+    androidResources {
+        noCompress += "tflite"
+    }
+
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+    }
 }
 
 kotlin {
@@ -87,7 +97,7 @@ dependencies {
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.androidx.camera.view)
 
-    implementation(libs.opencv)
+    implementation(libs.litert)
 
     testImplementation(libs.junit)
     testImplementation(libs.truth)
